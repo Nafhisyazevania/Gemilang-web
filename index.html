@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesenian Budaya Indonesia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #021931;
+            --secondary-color: #849FBC;
+            --accent-color: #edfdff;
+            --text-color: #404042;
+            --bg-color: #d9e9ff;
+        }
+
+        body {
+            font-family: 'karla', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: var(--accent-color);
+            border-radius: 35px;
+            padding: 5px 50px;
+            margin: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            border-radius: 0;
+            margin: 0;
+            padding: 5px 30px;
+        }
+
+        .navbar-brand {
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 24px;
+            padding-left: 5px;
+        }
+
+        .nav-item {
+            color: var(--text-color);
+            padding: 8px 16px;
+        }
+
+        .nav-link {
+            border-radius: 30px;
+        }
+
+        .navbar-toggler {
+            border: none;
+            background-color: var(--primary-color);
+            transition: background-color 0.3s;
+        }
+
+        .navbar-toggler:hover {
+            background-color: var(--text-color);
+        }
+
+        .navbar-toggler-icon {
+            background-image: none;
+            color: #fff;
+        }
+
+        .hero {
+            background-size: cover;
+            color: #fff;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        .col-md-6 {
+            padding: 0;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn-custom {
+            background: var(--secondary-color);
+            border: none;
+            color: var(--text-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-custom:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .card-hero {
+            border: none;
+            border-radius: 15px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            background-color: #fff;
+            height: 100%;
+            text-align: center;
+        }
+
+        #prolog {
+            padding: 25px;
+            background-color: #edfdff;
+        }
+
+        .prolog-card,
+        .prolog-card2 {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .prolog-card {
+            background: linear-gradient(135deg, #849FBC, #CFDDEB);
+            color: var(--text-color);
+        }
+
+        .prolog-card2 {
+            background: linear-gradient(135deg, #B0DFD6, #EAFBF8);
+            color: var(--text-color);
+        }
+
+        .prolog-card h1 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .prolog-card2 h3 {
+            text-align: left;
+            color: var(--primary-color);
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background-color: var(--accent-color);
+            height: 100%;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .dish-add-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--accent-color);
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .dish-add-btn:hover {
+            color: var(--secondary-color);
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .dish-add-btn i {
+            margin-right: 8px;
+        }
+
+        .container-legend {
+            background-color: #8ABCB3;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .container-legend:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .legend-card {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .legend-text {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .legend-image {
+            flex: 1;
+            background: url('asset/jam.png') no-repeat top center;
+            background-size: cover;
+        }
+
+        .img {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 100px;
+        }
+
+        .imgs {
+            height: 50px;
+            flex: 1 0 100px;
+
+        }
+
+        .makanan{
+            padding: 30px;
+            background-color: var(--secondary-color);
+            align-items: center;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: auto;
+            overflow: hidden;
+            background-color: #f0f4f8;
+            border-radius: 20px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .cardm {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            flex: 0 0 250px;
+            /* Fixed width for cards */
+            max-width: 100%;
+            /* Responsive */
+            height: auto;
+            /* Automatic height */
+            transition: transform 0.3s ease;
+        }
+
+        .cardm:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
+
+        .cardm-image {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            position: relative;
+            /* To position image inside */
+        }
+
+        .cardm-image img {
+            width: 120%;
+            height: 100%;
+            object-fit: cover;
+            /* Maintain image aspect ratio */
+            position: absolute;
+            top: 0;
+            left: -30%;
+            /* Shift image to left */
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .cardm-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .cardm-content,
+        h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        cardm-content,
+        p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .slider-container {
+                padding: 10px;
+            }
+
+            .cardm {
+                flex: 0 0 200px;
+                /* Smaller card width */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cardm {
+                flex: 0 0 150px;
+                /* Even smaller card width */
+            }
+
+            h3 {
+                font-size: 16px;
+                /* Smaller title font size */
+            }
+
+            p {
+                font-size: 12px;
+                /* Smaller paragraph font size */
+            }
+
+            .prev,
+            .next {
+                font-size: 20px;
+                /* Smaller button font size */
+                padding: 8px;
+                /* Smaller button padding */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <img src="asset/logo.png" alt="Logo" style="width: 150px; shadow: 0 15px 30px rgba(0, 0, 0, 0.2);">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars" style="color: #fff;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">
+                            <i class="fas fa-home me-1"></i>
+                            <u>Beranda</u>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bangunan.html">
+                            <i class="fas fa-building me-1"></i>
+                            Bangunan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="budaya.html">
+                            <i class="fas fa-palette me-1"></i>
+                            Budaya
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="asset/home.jpg" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-hero p-4">
+                        <h1 class="display-3 fw-bold mb-4">Warisan dan Budaya</h1>
+                        <p class="lead mb-5"> <b>Cerita yang Tak Pernah Usai</b></p>
+                        <a href="#seni" class="btn btn-custom btn-lg">Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prolog" class="py-5" style="padding: 10%;">
+        <div class="container">
+            <h2 class="text-center mb-5"
+                style="color: var(--primary-color); padding-top: 5%; padding-bottom: 5%; font-size: 40px; font-weight: bold;">
+                Prolog Tanpa Epilog <br> dari Malang
+                Bercerita</h2>
+            <div class="row g-4">
+                <div class="col">
+                    <div class="prolog-card2 h-100">
+                        <h1>30++</h1>
+                        <h3 class="card-title">Cagar Budaya</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prolog-card">
+                        <h3>Kota Sejuta Sejarah</h3>
+                        <h3 class="card-title">1 JUTA++</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prolog-card2">
+                        <h1>100++</h1>
+                        <h3 class="card-title">Sanggar Kesenian</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prolog-card">
+                        <h3>Khas-e boso walikan</h3>
+                        <h3 class="card-title">Lurrr...</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="prolog-card2">
+                        <h1>Mberot<box-icon name='trending-up' color='#06141b' size='lg'></box-icon></h1>
+                        <h3 class="card-title">Si paling banyak peminat</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="seni" class="py-5" style="background-color: #D9E6EE;">
+        <div class="container mt-10">
+            <h2 class="mb-2 mt-10" style="color: var(--primary-color);">Warisan Budaya</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <img src="asset/ijenhome.png" alt="Jalan Ijen" class="img-fluid">
+                        <h3 class="card-title">Ijen Boulevard</h3>
+                        <p class="card-text">Tari tradisional, wayang, dan teater rakyat yang memukau. <a
+                                href="bangunan.html"
+                                style="text-decoration: none; text-align: right; color: var(--primary-color);">Selengkapnya...</a>
+                        </p>
+                        <div class="dist-bottom-row">
+                            <a href="https://vt.tiktok.com/ZS2K9WuVt/" target="_blank" class="dish-add-btn">
+                                <i class="uil uil-play"></i> Tonton di Tiktok
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <iframe width="100%" height="60%"
+                            src="https://www.youtube.com/embed/MUb9kWd0kVM?si=LcH619U8HzvCuJ9A"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <h3 class="card-title" style="margin: 10px;">Tari Bapang</h3>
+                        <p class="card-text">Tari Bapang adalah salah satu tarian tradisional dari Malang, yang
+                            merupakan bagian dari kesenian Topeng Malangan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <img src="asset/baksohome.png" alt="Bakso Malang" class="img-fluid">
+                        <h3 class="card-title">Bakso Malang</h3>
+                        <p class="card-text">Hidangan bakso khas dari Kota Malang, yang terkenal karena variasinya yang
+                            kaya dan cita rasa yang otentik.
+                        </p>
+                        <div class="dist-bottom-row">
+                            <a href="makanan.html" target="_blank" class="dish-add-btn">
+                                <i class="uil uil-play"></i> Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-card" style="padding: 50px 13px 20px 13px;">
+            <img src="asset/garis.png" alt="Line" style="padding: 30px; width: 40%; float: left;">
+            <h3 class="img" style="text-align: right; color: var(--primary-color); text-align: left;">
+                Lintasi ragam kekayaan di Bumi Arema yang mempesona.
+                <br>Di mana tradisi, seni, dan warisan sejarah bertemu <br>
+                dalam sebuah harmoni.
+            </h3>
+        </div>
+    </section>
+
+    <section class="makanan">
+        <h1>Makanan Khas Malang</h1>
+        <div class="slider">
+            <div class="slider-container">
+                <div class="cardm">
+                    <div class="cardm-image">
+                        <img src="" alt="Tari Bapang">
+                    </div>
+                    <div class="card-content">
+                        <h3>Tari Bapang</h3>
+                        <p>Tarian tradisional dari Malang, bagian dari kesenian Topeng Malangan.</p>
+                    </div>
+                </div>
+
+                <div class="cardm">
+                    <div class="cardm-image">
+                        <img src="toko-oen-malang_43.jpeg" alt="Tari Beskalan">
+                    </div>
+                    <div class="cardm-content">
+                        <h3>Tari Beskalan</h3>
+                        <p>Tari penyambutan tamu, ikon kebudayaan khas Malang.</p>
+                    </div>
+                </div>
+
+                <div class="cardm">
+                    <div class="cardm-image">
+                        <img src="toko-oen-malang_43.jpeg" alt="Tari Remo">
+                    </div>
+                    <div class="cardm-content">
+                        <h3>Tari Remo</h3>
+                        <p>Tari penyambutan khas Jawa Timur yang melambangkan keberanian.</p>
+                    </div>
+                </div>
+
+                <div class="cardm">
+                    <div class="cardm-image">
+                        <img src="toko-oen-malang_43.jpeg" alt="Tari Remo">
+                    </div>
+                    <div class="cardm-content">
+                        <h3>Tari Remo</h3>
+                        <p>Tari penyambutan khas Jawa Timur yang melambangkan keberanian.</p>
+                    </div>
+                </div>
+
+                <div class="cardm">
+                    <div class="cardm-image">
+                        <img src="toko-oen-malang_43.jpeg" alt="Tari Remo">
+                    </div>
+                    <div class="cardm-content">
+                        <h3>Tari Remo</h3>
+                        <p>Tari penyambutan khas Jawa Timur yang melambangkan keberanian.</p>
+                    </div>
+                </div>
+
+                <div class="cardm">
+                    <div class="cardm-image">
+                        <img src="toko-oen-malang_43.jpeg" alt="Tari Remo">
+                    </div>
+                    <div class="cardm-content">
+                        <h3>Tari Remo</h3>
+                        <p>Tari penyambutan khas Jawa Timur yang melambangkan keberanian.</p>
+                    </div>
+                </div>
+
+            </div>
+            <button class="prev" onclick="slidePrev()">&#10094;</button>
+            <button class="next" onclick="slideNext()">&#10095;</button>
+        </div>
+
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Kesenian Budaya Indonesia. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script>
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        let currentIndex = 0;
+        const cardWidth = 270; // 250px card width + 20px gap
+
+        function slideNext() {
+            const slider = document.querySelector('.slider-container');
+            const totalCards = document.querySelectorAll('.cardm').length;
+            if (currentIndex < totalCards - 4) { // Adjust based on the number of cards visible
+                currentIndex++;
+                slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+        }
+
+        function slidePrev() {
+            const slider = document.querySelector('.slider-container');
+            if (currentIndex > 0) {
+                currentIndex--;
+                slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+        }
+    </script>
+</body>
+
+</html>
