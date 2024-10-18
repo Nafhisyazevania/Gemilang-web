@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #021931;
+    --secondary-color: #849FBC;
+    --accent-color: #edfdff;
+    --text-color: #404042;
+    --bg-color: #d9e9ff;
+}
+
+body {
+    font-family: 'karla', sans-serif;
+    padding: 0;
+    margin: auto;
+    background-color: #fff;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #CFDDEB, #849FBC);
+    border-radius: 35px;
+    padding: 5px;
+    margin: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    border-radius: 0;
+    margin: 0;
+}
+
+.navbar-brand {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.nav-item {
+    color: var(--accent-color);
+    padding: 8px 10px;
+}
+
+.nav-link {
+    border-radius: 30px;
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: var(--primary-color);
+    transition: background-color 0.3s;
+}
+
+.navbar-toggler:hover {
+    background-color: var(--text-color);
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    color: #fff;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.search-form input {
+    border-radius: 20px 0 0 20px;
+    border: none;
+    padding: 5px;
+}
+
+.search-form button {
+    border-radius: 0 20px 20px 0;
+    background-color: var(--text-color);
+    color: var(--accent-color);
+    border: none;
+    padding: 5px;
+}
+
+/* Card */
+.containerbudaya {
+    background-color: #fff;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.containerbudaya h1 {
+    font-weight: 700;
+    padding: 50px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: var(--accent-color);
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 6%;
+    display: flex;
+}
+
+.budaya {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    align-items: center;
+}
